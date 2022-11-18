@@ -9,7 +9,11 @@ Add all testing files (images and videos) you want in the testing folder. The de
 # RUN DETECTION ON VIDEOS
 Use the following command line scripts for running the code
 
-<python main -v "path/to/video">  for detection on video (might take some time).
-
+```
+python main -v "path/to/video"  #for detection on video (might take some time).
+```
 # RUN DETECTION ON IMAGES
-<python main -i "path/to/image">  for detection on image (almost instantaneous).
+
+```
+python main -i "path/to/image"  for detection on image (almost instantaneous).
+```
