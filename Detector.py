@@ -1,9 +1,9 @@
 import cv2 
 import numpy as np 
 import matplotlib.pyplot as plt
-# from paddleocr import PaddleOCR
+from paddleocr import PaddleOCR
 
-# ocr = PaddleOCR(lang='en',rec_algorithm='CRNN')
+ocr = PaddleOCR(lang='en',rec_algorithm='CRNN')
 
 class LicensePlateDetector:
     def __init__(self, pth_weights: str, pth_cfg: str, pth_classes: str):
@@ -62,9 +62,9 @@ class LicensePlateDetector:
                 label = str(self.classes[class_ids[i]])
                 confidence = str(round(confidences[i],2))
                 roi = img[y:y + h, x+3:x + w+3]
-                # text = ocr.ocr(roi, cls=False, det=False)
-                # plate_number=text[0][0][0]
-                # cv2.putText(img, plate_number, (x, y-10), self.font, 2, (0, 255, 0), 2)
+                text = ocr.ocr(roi, cls=False, det=False)
+                plate_number=text[0][0][0]
+                cv2.putText(img, plate_number, (x, y-10), self.font, 2, (0, 255, 0), 2)
                 
                 cv2.rectangle(img, (x,y), (x + w, y + h), self.color, 2)
                 cv2.putText(img, label + ' ' + confidence, (x-100, y+50), self.font, 2, self.color, 3)
@@ -145,9 +145,9 @@ class LicensePlateDetector:
                     label = str(['LP'][class_ids[i]])
                     confidence = str(round(confidences[i],2))
                     roi = img[y:y + h, x+3:x + w+3]
-                    # text = ocr.ocr(roi, cls=False, det=False)
-                    # plate_number=text[0][0][0]
-                    # cv2.putText(img, plate_number, (x, y-10), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 255, 0), 2)
+                    text = ocr.ocr(roi, cls=False, det=False)
+                    plate_number=text[0][0][0]
+                    cv2.putText(img, plate_number, (x, y-10), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 255, 0), 2)
                     cv2.rectangle(img, (x,y), (x + w, y + h), (255,0,0), 2)
                     cv2.putText(img, label + ' ' + confidence, (x-100, y+50), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 1)
 
