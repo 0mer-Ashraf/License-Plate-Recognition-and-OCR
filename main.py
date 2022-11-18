@@ -15,9 +15,9 @@ if exists("utilities/lapi.weights")==False:
     output="utilities/lapi.weights"
     gdown.download(url, output, quiet=False)
     
-weights_path = 'lapi.weights'
-configuration_path = 'darknet-yolov3.cfg'
-classes_path="classes.names"
+weights_path = 'utilities/lapi.weights'
+configuration_path = 'utilities/darknet-yolov3.cfg'
+classes_path="utilities/classes.names"
 
 lpd = LicensePlateDetector(
     pth_weights=weights_path, 
